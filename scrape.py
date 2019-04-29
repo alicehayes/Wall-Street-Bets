@@ -37,7 +37,7 @@ popular = {}
 
 #blacklist of things that look like tickers but aren't. Note some things here are valid tickers but they are more
 #commonly used as abreivations on WSB
-not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO','WTF', 'A']
+not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO', 'WTF', 'A', 'ATH']
 
 #negative words subtract from faith positive words add
 negative = ['put','short','down','sell','drop','fall','lose','bear','out','bad','mistake']
