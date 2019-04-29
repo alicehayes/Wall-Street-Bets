@@ -6,10 +6,10 @@ import jinja2
 from operator import itemgetter
 
 #praw Authintification
-reddit = praw.Reddit(client_id='KzRH_2b-1SXGIQ', \
-                     client_secret='8nZyQB3MZV6dqD8ZX5jvEBAHf4s', \
+reddit = praw.Reddit(client_id='reddit client id', \
+                     client_secret='reddit client secret', \
                      redirect_uri='http://localhost:8080',\
-                     user_agent='WSB')
+                     user_agent='reddit app name')
 
 
 #subreddit instance to be used to grab comments
@@ -37,7 +37,7 @@ popular = {}
 
 #blacklist of things that look like tickers but aren't. Note some things here are valid tickers but they are more
 #commonly used as abreivations on WSB
-not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO', 'WTF']
+not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO','WTF', 'A']
 
 #negative words subtract from faith positive words add
 negative = ['put','short','down','sell','drop','fall','lose','bear','out','bad','mistake']
@@ -53,9 +53,9 @@ def FindTicker(text):
     #iterates over temp checking if each ticker is on the blacklist not_tickers if the ticker is not blacklisted it is
     #added to tickers
     #also
-    #tests each ticker by making a lookup call to fix_yahoo_finance if the call is empty it removes the ticker
-    #I believe the try: except: block is depreciated at one point I was using another API that threw an error when a
-    #bad lookup went through so I used that instead of checking if the returned value was empty.
+    #tests each ticker by making a lookup call to fix_yahoo_finance if the call is not empty it adds the ticker
+    #it also checks that the ticker is tradable to avoid adding words that people capitalized that happen to be obscure
+    #non tradeable tickers
 
     for ticker in temp:
         if ticker in not_tickers:
@@ -64,6 +64,8 @@ def FindTicker(text):
             test = yf.Ticker(ticker)
             if test.info != {}:
                 tickers.add(ticker)
+                if test.info['tradeable'] == False:
+                    tickers.remove(ticker)
 
 
     if temp ==[]:
