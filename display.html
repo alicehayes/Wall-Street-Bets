@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Wall Street Bet's Picks</title>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7901715217079030",
+        enable_page_level_ads: true
+      });
+    </script>
 </head>
 <body>
 <div id="top">
@@ -18,12 +26,12 @@
 <div id="puts">
     <h2>Top 5 faggy Puts</h2>
     <div class="Symbol">
-        SYMBOL <br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put1_sym}}">{{put1_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put2_sym}}">{{put2_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put3_sym}}">{{put3_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put4_sym}}">{{put4_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put5_sym}}">{{put5_sym}}</a><br>
+        SYMBOL | 1D <br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put1_sym}}">{{put1_sym}} | {% if '-' not in put1_chn %}+{% endif %}{{put1_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put2_sym}}">{{put2_sym}} | {% if '-' not in put2_chn %}+{% endif %}{{put2_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put3_sym}}">{{put3_sym}} | {% if '-' not in put2_chn %}+{% endif %}{{put3_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put4_sym}}">{{put4_sym}} | {% if '-' not in put2_chn %}+{% endif %}{{put4_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{put5_sym}}">{{put5_sym}} | {% if '-' not in put2_chn %}+{% endif %}{{put5_chn}}%</a><br>
     </div>
     <div class="Total">
         FAITH <br>
@@ -53,12 +61,12 @@
 <div id="calls">
     <h2>Top 5 Autistic Calls</h2>
     <div class="Symbol">
-        SYMBOL <br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call1_sym}}">{{call1_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call2_sym}}">{{call2_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call3_sym}}">{{call3_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call4_sym}}">{{call4_sym}}</a><br>
-        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call5_sym}}">{{call5_sym}}</a><br>
+        SYMBOL | 1D <br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call1_sym}}">{{call1_sym}} | {% if '-' not in call1_chn %}+{% endif %}{{call1_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call2_sym}}">{{call2_sym}} | {% if '-' not in call2_chn %}+{% endif %}{{call2_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call3_sym}}">{{call3_sym}} | {% if '-' not in call3_chn %}+{% endif %}{{call3_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call4_sym}}">{{call4_sym}} | {% if '-' not in call4_chn %}+{% endif %}{{call4_chn}}%</a><br>
+        <a target="_blank" href="https://finviz.com/quote.ashx?t={{call5_sym}}">{{call5_sym}} | {% if '-' not in call5_chn %}+{% endif %}{{call5_chn}}%</a><br>
     </div>
     <div class="Total">
         FAITH <br>
