@@ -6,8 +6,8 @@ import jinja2
 from operator import itemgetter
 
 #praw Authintification
-reddit = praw.Reddit(client_id='Reddit App ID', \
-                     client_secret='Reddit Client ID', \
+reddit = praw.Reddit(client_id='KzRH_2b-1SXGIQ', \
+                     client_secret='8nZyQB3MZV6dqD8ZX5jvEBAHf4s', \
                      redirect_uri='http://localhost:8080',\
                      user_agent='WSB')
 
@@ -21,7 +21,7 @@ subreddit = reddit.subreddit('WallStreetBets')
 comments_body = []
 
 #holds the list of stock tickers
-tickers = []
+tickers = set()
 
 #holds tickers plus associated negative and positive counts
 outlook = {}
@@ -37,7 +37,7 @@ popular = {}
 
 #blacklist of things that look like tickers but aren't. Note some things here are valid tickers but they are more
 #commonly used as abreivations on WSB
-not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO']
+not_tickers = [[],'DD', 'WSB', 'LOL', 'I', 'CNN', 'IV', 'IP', 'YOLO', 'TIL', 'EDIT', 'OTM', 'GOT', 'IPO', 'WTF']
 
 #negative words subtract from faith positive words add
 negative = ['put','short','down','sell','drop','fall','lose','bear','out','bad','mistake']
@@ -45,7 +45,6 @@ positive = ['call','long','up','buy','bull','in','good']
 
 
 def FindTicker(text):
-    temp = []
 
     #this regex finds anything that looks like a stock ticker so pretty much anything upper case 1-5 characters long
     #it's honestly kind of a nightmare 'cause I don't get regex
@@ -53,42 +52,27 @@ def FindTicker(text):
 
     #iterates over temp checking if each ticker is on the blacklist not_tickers if the ticker is not blacklisted it is
     #added to tickers
+    #also
+    #tests each ticker by making a lookup call to fix_yahoo_finance if the call is empty it removes the ticker
+    #I believe the try: except: block is depreciated at one point I was using another API that threw an error when a
+    #bad lookup went through so I used that instead of checking if the returned value was empty.
+
     for ticker in temp:
-        if ticker not in not_tickers:
-            if ticker not in tickers:
-                tickers.append(ticker)
-            else:
-                temp.pop()
         if ticker in not_tickers:
-            temp.pop()
+            temp.remove(ticker)
+        else:
+            test = yf.Ticker(ticker)
+            if test.info != {}:
+                tickers.add(ticker)
+
 
     if temp ==[]:
         return tickers
 
     #this just removes any duplicates from the temp list
-    for i in range(len(temp)-1):
-        try:
-            for j in range(i+1,len(temp)-1):
-                if temp[i] == temp[j]:
-                    try:
-                        temp.pop(j)
+    temp = set(temp)
 
-                    except:
-                        pass
 
-        except:
-            pass
-
-    #tests each ticker by making a lookup call to fix_yahoo_finance if the call is empty it removes the ticker
-    #I believe the try: except: block is depreciated at one point I was using another API that threw an error when a
-    #bad lookup went through so I used that instead of checking if the returned value was empty.
-    for i in range(len(temp)):
-        try:
-            test = yf.Ticker(tickers[-1-i])
-            if test.info =={}:
-                tickers.pop(-1-i)
-        except Exception as e:
-            print(e)
 
     #iterates over temp first making sure that the ticker is valid then looking at the comment the ticker was found in
     #and finding any words on the positive and negative lists then using that to add or subtract from the outlook value
