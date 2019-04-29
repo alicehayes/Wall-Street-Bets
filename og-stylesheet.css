@@ -1,5 +1,6 @@
 body {
-background: #5E5E5E;
+    background: #101012;
+    font-family: sans-serif;
 }
 
 a{
@@ -12,7 +13,7 @@ text-align: center;
 background: #C1C1C1;
 border: 3px solid #909190;
 border-radius: 10px;
-padding: 50px 15px 15px 15px;
+padding: 5px 15px 15px 15px;
 }
 
 #presenting {
@@ -29,30 +30,35 @@ font-size: 26px;
 }
 
 #puts {
+    font-size: 24px;
     float: left;
     width: 48%;
     text-align: center;
-    border: 3px solid #909190;
     border-radius: 10px;
-    background: #C14E4E;
     line-height: 1.5;
-    padding: 25px 0;
+    padding: 10px 0;
+    background: #FF3B21;
+    color: #101012;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 1.0), 0 3px 24px rgba(48, 51, 51, 1.0);
 }
 
 #calls {
+    font-size: 24px;
     float: right;
     width: 48%;
     text-align: center;
-    border: 3px solid #909190;
     border-radius: 10px;
-    background: #4EC152;
     line-height: 1.5;
-    padding: 25px 0;
+    padding: 10px 0;
+    background: #00C78B;
+    color: #101012;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 1.0), 0 3px 24px rgba(48, 51, 51, 1.0);
 }
 
 .Symbol {
     float: left;
     width: 25%;
+    font-weight: bold;
 }
 
 .Total {
