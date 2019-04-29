@@ -1,0 +1,85 @@
+body {
+background: #5E5E5E;
+}
+
+#top {
+float: top;
+text-align: center;
+background: #C1C1C1;
+border: 3px solid #909190;
+border-radius: 10px;
+padding: 50px 15px 15px 15px;
+}
+
+#presenting {
+font-size: 36px;
+}
+
+#description {
+font-size: 26px;
+}
+
+#footnotes {
+    font-size: 8px;
+    text-align: left;
+}
+
+#puts {
+    float: left;
+    width: 48%;
+    text-align: center;
+    border: 3px solid #909190;
+    border-radius: 10px;
+    background: #C14E4E;
+    line-height: 1.5;
+    padding: 25px 0;
+}
+
+#calls {
+    float: right;
+    width: 48%;
+    text-align: center;
+    border: 3px solid #909190;
+    border-radius: 10px;
+    background: #4EC152;
+    line-height: 1.5;
+    padding: 25px 0;
+}
+
+.Symbol {
+    float: left;
+    width: 25%;
+}
+
+.Total {
+    float: left;
+    width: 25%;
+}
+
+.For {
+    float: left;
+    width: 25%;
+}
+
+.Against {
+    float: left;
+    width: 25%;
+}
+
+#popular {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    line-height: 1.5;
+    padding-bottom: 20px;
+    color: white;
+    left: 5%;
+    font-size: 24px;
+}
+
+#pop {
+    color: white;
+    font-size: 16px;
+    padding-top: 20px;
+    margin-top: 20px;
+}
