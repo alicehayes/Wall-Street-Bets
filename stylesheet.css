@@ -2,6 +2,10 @@ body {
 background: #5E5E5E;
 }
 
+a{
+    color: inherit;
+}
+
 #top {
 float: top;
 text-align: center;

@@ -6,10 +6,10 @@ import jinja2
 from operator import itemgetter
 
 #praw Authintification
-reddit = praw.Reddit(client_id='reddit client id', \
-                     client_secret='reddit client secret', \
+reddit = praw.Reddit(client_id='Reddit Client Id', \
+                     client_secret='Reddit Client Secret', \
                      redirect_uri='http://localhost:8080',\
-                     user_agent='reddit app name')
+                     user_agent='Reddit App Name')
 
 
 #subreddit instance to be used to grab comments
@@ -255,7 +255,7 @@ def main():
     #it takes a couple seconds even with really low values but big ones take a couple minutes
     #I would not run it with very few comments because some lists might throw index errors because they won't have enough tickers
     #low values also break puts and calls because of insufficent sentiment
-    GetComments(1000,1000)
+    GetComments(100,100)
     #prints the list of tickers and outlooks so that you can check the sanity
     print(tickers)
     print(outlook)
