@@ -3,13 +3,14 @@ import re
 import fix_yahoo_finance as yf
 import os
 import jinja2
-from operator import itemgetter
+import datetime
+
 
 #praw Authintification
 reddit = praw.Reddit(client_id='Reddit client Id', \
-                     client_secret='reddit client secret', \
-                     redirect_uri='http://localhost:8080',\
-                     user_agent='reddit app name)
+                      client_secret='reddit client secret', \
+                      redirect_uri='http://localhost:8080',\
+                      user_agent='reddit app name')
 
 
 #subreddit instance to be used to grab comments
@@ -259,13 +260,19 @@ def Generate():
     with open(rendered_file_path, "wb") as result_file: #the "wb" option is vital for unicode support
         result_file.write(output_text)
 
+def DumpLog():
+    date = datetime.datetime.now()
+    fname = str(date.strftime("%Y-%m-%d %H.%M")) + '.txt'
+    with open(fname, 'w') as log_file:
+        for ticker in outlook:
+            log_file.write(str(outlook[ticker]) + '\n')
 def main():
     #gets all the comments 1000 is the max for both of these parameters GetComments() also handles titles and sends the
     #text to FindTicker() which extracts and validates tickers
     #it takes a couple seconds even with really low values but big ones take a couple minutes
     #I would not run it with very few comments because some lists might throw index errors because they won't have enough tickers
     #low values also break puts and calls because of insufficent sentiment
-    GetComments(100,100)
+    GetComments(10,100)
     #prints the list of tickers and outlooks so that you can check the sanity
     print(tickers)
     print(outlook)
@@ -275,6 +282,7 @@ def main():
     print(calls)
     print(popular)
     #has Jinja2 generate the HTML
+    DumpLog()
     Generate()
 
 main()
